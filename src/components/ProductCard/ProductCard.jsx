@@ -1,16 +1,16 @@
 import { TbShoppingBag } from "react-icons/tb";
 
-const ProductCard = () => {
+const ProductCard = ({ items }) => {
     return (
         <div className="flex flex-col w-[277px] border border-[#F1F1F1] p-4 gap-8">
             <div className="flex items-center justify-center bg-[#F2F2F2] w-[245px] h-[236px] rounded-lg mx-auto">
-                <img className="w-52 h-52" src="https://i.ibb.co.com/dPqbPXV/image-125-removebg-preview-1.png" alt="" />
+                <img className="w-52 h-52" src={items.img} alt="" />
             </div>
             <div className="flex flex-col gap-4 w-[245px]">
-                <h1 className="text-xl font-semibold text-[#343434]">Name</h1>
+                <h1 className="text-xl font-semibold text-[#343434]">{items.name}</h1>
 
                 <div className="flex gap-3 justify-between items-center">
-                    <p className="text-xl font-bold text-[#343434]">$299.00</p>
+                    <p className="text-xl font-bold text-[#343434]">$ {items.price}</p>
                     <p className="text-xl font-medium text-[#ABABAB] line-through">$350.00</p>
                     <p className="text-xl font-semibold text-[#B92E2E]">30%OFF</p>
                 </div>
