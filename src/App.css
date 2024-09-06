@@ -1,0 +1,12 @@
+.bg-example {
+    background-image: url('./assets//img//chris-lee-70l1tDAI6rM-unsplash 1.png');
+
+    /* Set the background image */
+    background-size: cover;
+    /* Ensure the image covers the entire div */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the image */
+
+}
