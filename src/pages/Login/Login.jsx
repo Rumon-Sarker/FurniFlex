@@ -1,6 +1,4 @@
 import { Box, Checkbox, Chip, Container, Divider, FormControlLabel, TextField, Typography } from "@mui/material";
-import { FaApple, } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import { useForm } from "react-hook-form";
@@ -17,7 +15,7 @@ const Login = () => {
 
 
     const handleFormSubmit = (data) => {
-        console.log("Sumit Form data is", data)
+        console.log("Login Form data is", data)
     }
 
     return (
@@ -71,7 +69,7 @@ const Login = () => {
                                 error={!!errors.password}
                                 helperText={errors.password?.message}
                             />
-                            <Typography className="w-[452px] h-[17px] text-[14px] text-[#1E99F5] underline cursor-pointer bg-[#FFFFFF]" align="right"> Forget Password</Typography>
+                            <Typography classNa me="w-[452px] h-[17px] text-[14px] text-[#1E99F5] underline cursor-pointer bg-[#FFFFFF]" align="right"> Forget Password</Typography>
                             <FormControlLabel required control={<Checkbox size="small" />} label="I agree to the Terms & Policy" />
 
                             {/* Submit Button */}
@@ -88,7 +86,7 @@ const Login = () => {
                             align="center"
                             className="font-medium text-[14px]"
                         >
-                            Have an account? <Link className="text-[#4977EE]" to={"/signUp"}>SignUp</Link>
+                            haven't an account? <Link className="text-[#4977EE]" to={"/signUp"}>SignUp</Link>
                         </Typography>
                     </div>
                 </Box>
