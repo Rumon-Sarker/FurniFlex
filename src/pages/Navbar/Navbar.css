@@ -1,0 +1,15 @@
+/* Style for the active link */
+.active {
+    font-weight: bold;
+    color: #f50057;
+    /* Material UI pink accent color */
+    border-bottom: 3px solid #88797e;
+    /* Optional underline effect */
+}
+
+/* Normal nav-link style */
+.nav-link {
+    text-decoration: none;
+    color: black;
+    /* Inherit color from parent */
+}

@@ -22,7 +22,7 @@ const SignUp = () => {
     }
 
     return (
-        <div className="md:flex">
+        <div className="md:flex md:w-[1450px] mx-auto">
             <Container className="flex justify-center items-center min-h-screen">
                 <Box
                     className="shadow-md bg-[#FAFAFA] border border-[#f5f5f5]  rounded-lg w-[500px] h-[619px]"

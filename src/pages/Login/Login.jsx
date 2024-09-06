@@ -19,7 +19,7 @@ const Login = () => {
     }
 
     return (
-        <div className="md:flex">
+        <div className="md:flex md:w-[1450px] mx-auto">
             <Container className="flex justify-center items-center min-h-screen">
                 <Box
                     className="shadow-md bg-[#FAFAFA] border border-[#f5f5f5]  rounded-lg w-[500px] h-[618px]"
@@ -33,7 +33,8 @@ const Login = () => {
                     <div className="space-y-4 ">
                         <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4 ">
 
-                            {/* Email */}
+                            {/* Email  */}
+
                             <TextField
                                 label="Email address"
                                 type="email"
@@ -69,7 +70,7 @@ const Login = () => {
                                 error={!!errors.password}
                                 helperText={errors.password?.message}
                             />
-                            <Typography classNa me="w-[452px] h-[17px] text-[14px] text-[#1E99F5] underline cursor-pointer bg-[#FFFFFF]" align="right"> Forget Password</Typography>
+                            <Typography className="w-[452px] h-[17px] text-[14px] text-[#1E99F5] underline cursor-pointer bg-[#FFFFFF]" align="right"> Forget Password</Typography>
                             <FormControlLabel required control={<Checkbox size="small" />} label="I agree to the Terms & Policy" />
 
                             {/* Submit Button */}
