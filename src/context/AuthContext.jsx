@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             if (currentUser) {
                 setUser(currentUser);
+                console.log("current users", currentUser)
                 setLoading(false)
             }
         })
@@ -50,7 +51,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ user, loginUser, signUpUser, logOut, googleLogin }}>
+        <AuthContext.Provider value={{ user, loginUser, signUpUser, logOut, googleLogin, loading }}>
             {children}
         </AuthContext.Provider>
     )

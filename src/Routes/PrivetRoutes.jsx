@@ -1,20 +1,15 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { Box, CircularProgress } from '@mui/material';
+
 import { useNavigate } from 'react-router-dom';
 
 const PrivetRoutes = ({ children }) => {
     const navigate = useNavigate();
 
-    const { user, loading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
+    console.log("privet routes user", user)
 
-    if (loading) {
-        return (
-            <Box sx={{ display: 'flex' }}>
-                <CircularProgress />
-            </Box>)
-    }
-    else if (user) {
+    if (user) {
         return children;
     }
     else {

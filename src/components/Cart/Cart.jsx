@@ -83,7 +83,7 @@ const Cart = () => {
                             <h1 className="flex justify-between">SUBTOTAL: <span className="">$ {0}</span></h1>
                             <h1 className="flex justify-between border-b">DISCOUNT: <span>$ 00</span></h1>
                             <p className="flex justify-between">TOTAL: <span>$ {totaPrice}</span> </p>
-                            <button onClick={handaleCheckOut} className="btn w-full hover:bg-gray-300 mt-3 hover:text-black hover:rotate-1   bg-green-100 font-bold rounded border-red-100 border-b-4 ">PROCEED TO CHECKOUT</button>
+                            <button onClick={handaleCheckOut} className="btn w-full mt-3 hover:bg-black text-white hover:rotate-1   bg-black font-bold rounded border-red-100 border-b-4 ">PROCEED TO CHECKOUT</button>
                         </div>
                     </div>
 
