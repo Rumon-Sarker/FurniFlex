@@ -1,25 +1,44 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import Swal from "sweetalert2";
 
 const Cart = () => {
-    const [products, setProducts] = useState();
 
-    useEffect(() => {
-        fetch("products.json")
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, []);
 
-    const totaPrice = products?.reduce((prev, item) => prev + item.price, 0);
-    // console.log("total price is", totaPrice)
+    const { cart = [], removeFromCart } = useContext(CartContext);
+
+
+    const handaleCheckOut = () => {
+        Swal.fire({
+            title: " Coming Soooooooon............",
+            showClass: {
+                popup: `
+                animate__animated
+                animate__fadeInUp
+                animate__faster
+              `
+            },
+            hideClass: {
+                popup: `
+                animate__animated
+                animate__fadeOutDown
+                animate__faster
+              `
+            }
+        });
+    }
+
+    const totaPrice = cart?.reduce((prev, item) => prev + item.price, 0);
+
 
     return (
         <div className="md:w-[1450px] mx-auto bg-gray-100">
             <h1 className="text-3xl font-semibold p-2">An overview of your order</h1>
             {/* if cartData > 0 then show this content otherwise hide this content  */}
             {
-                products?.length > 0 ?
+                cart?.length > 0 ?
 
                     <div className="w-full flex gap-4 justify-between pt-12 pb-32 ">
 
@@ -28,7 +47,7 @@ const Cart = () => {
                             <table className="table">
 
                                 <tbody>
-                                    {products?.map((item, index) => (
+                                    {cart?.map((item, index) => (
                                         <tr key={index}>
                                             <th>
                                                 <label>
@@ -46,8 +65,9 @@ const Cart = () => {
                                             </td>
                                             <td>{item.name}</td>
                                             <td>${item.price}</td>
+
                                             <th>
-                                                <button onClick={() => handaleDelete(item?._id)} className=" text-2xl btn-xs"><FaDeleteLeft /></button>
+                                                <button onClick={() => removeFromCart(item?.id)} className=" text-2xl btn-xs"><FaDeleteLeft /></button>
                                             </th>
                                         </tr>
 
@@ -59,11 +79,11 @@ const Cart = () => {
                         <div className="space-y-4 w-96 rounded bg-gray-50 p-4 mx-auto md:mx-0 font-bold">
                             <h1 className="text-2xl font-bold">Order Details</h1>
 
-                            <h1 className="flex justify-between">TOTAL ITEMS: <span className="">{products?.length}</span></h1>
+                            <h1 className="flex justify-between">TOTAL ITEMS: <span className="">{cart?.length}</span></h1>
                             <h1 className="flex justify-between">SUBTOTAL: <span className="">$ {0}</span></h1>
                             <h1 className="flex justify-between border-b">DISCOUNT: <span>$ 00</span></h1>
                             <p className="flex justify-between">TOTAL: <span>$ {totaPrice}</span> </p>
-                            <button onClick={"handaleCheckOut"} className="btn w-full hover:bg-gray-300 mt-3 hover:text-black hover:rotate-1   bg-green-100 font-bold rounded border-red-100 border-b-4 ">PROCEED TO CHECKOUT</button>
+                            <button onClick={handaleCheckOut} className="btn w-full hover:bg-gray-300 mt-3 hover:text-black hover:rotate-1   bg-green-100 font-bold rounded border-red-100 border-b-4 ">PROCEED TO CHECKOUT</button>
                         </div>
                     </div>
 

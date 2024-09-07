@@ -1,13 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { GoSignIn, GoSignOut } from "react-icons/go";
 import { TbShoppingBag } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
+import { CartContext } from "../../context/CartContext";
 
 const Navbar = () => {
     const navigate = useNavigate();
-
+    const { cart = [] } = useContext(CartContext);
     const { user, logOut } = useContext(AuthContext);
 
     const handaleSignOut = async () => {
@@ -81,7 +81,7 @@ const Navbar = () => {
                 <Link to={"/carts"}>
                     <div className="flex items-center" >
                         <TbShoppingBag className="md:text-3xl lg:text-4xl text-3xl" />
-                        <p className="flex absolute md:ml-6 ml-3 mt-6 justify-center text-white md:w-[16px] md:h-[16px] w-1 h-1 bg-[#141b20] rounded-full p-3 items-center">2</p>
+                        <p className="flex absolute md:ml-6 ml-3 mt-6 justify-center text-white md:w-[16px] md:h-[16px] w-1 h-1 bg-[#141b20] rounded-full p-3 items-center">{cart?.length}</p>
                     </div>
                 </Link>
 

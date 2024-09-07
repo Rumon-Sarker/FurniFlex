@@ -1,16 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { NavLink } from "react-router-dom";
+import { ProductContext } from "../../context/ProductConext";
 
 const Products = () => {
 
-    const [products, setProducts] = useState();
+    // const [products, setProducts] = useState();
 
-    useEffect(() => {
-        fetch("products.json")
-            .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
+    const { productList } = useContext(ProductContext);
+
+    // useEffect(() => {
+    //     fetch("products.json")
+    //         .then(res => res.json())
+    //         .then(data => setProducts(data))
+    // }, [])
     return (
         <div className="flex md:w-[1450px]  mx-auto">
             {/* menu section  */}
@@ -24,7 +27,7 @@ const Products = () => {
 
             {/* Product sections  */}
             <div className="md:w-9/12  grid md:grid-cols-3 grid-cols-1 gap-3">
-                {products?.map((items) =>
+                {productList?.map((items) =>
                     <ProductCard key={items.id} items={items} />
                 )}
 

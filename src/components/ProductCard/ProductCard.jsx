@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { TbShoppingBag } from "react-icons/tb";
+import { CartContext } from "../../context/CartContext";
 
 const ProductCard = ({ items }) => {
+    const { addToCart } = useContext(CartContext);
+
     return (
         <div className="flex flex-col w-[277px] border border-[#F1F1F1] p-4 gap-8">
             <div className="flex items-center justify-center bg-[#F2F2F2] w-[245px] h-[236px] rounded-lg mx-auto">
@@ -16,7 +20,7 @@ const ProductCard = ({ items }) => {
                 </div>
                 <h2 className="text-sm font-normal text-[#838383]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab aut aliquid eaque blanditiis numquam non.</h2>
             </div>
-            <button className="flex items-center justify-center gap-6 w-60 h-11 rounded bg-[#202020] text-[#ffffff] text-base font-semibold">
+            <button onClick={() => addToCart(items)} className="flex items-center justify-center gap-6 w-60 h-11 rounded bg-[#202020] text-[#ffffff] text-base font-semibold">
                 <TbShoppingBag className="text-xl" />
                 Add To cart
             </button>
