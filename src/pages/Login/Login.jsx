@@ -1,22 +1,51 @@
 import { Box, Checkbox, Chip, Container, Divider, FormControlLabel, TextField, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../App.css";
 import { useForm } from "react-hook-form";
 import SocaialLogin from "../../components/SocaialLogin/SocaialLogin";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
+
+    const navigate = useNavigate();
 
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm();
 
+    const { loginUser, user } = useContext(AuthContext);
 
-    const handleFormSubmit = (data) => {
-        console.log("Login Form data is", data)
+    console.log("cureent", user)
+    const handleFormSubmit = async (data) => {
+
+        const email = data.email;
+        const password = data.password;
+        await loginUser(email, password)
+            .then(res => {
+                if (res?.user?.email) {
+                    navigate("/products")
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Login Success",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                reset();
+
+            })
+            .catch((err) => {
+                console.log(err.message)
+            })
     }
+
 
     return (
         <div className="md:flex md:w-[1450px] mx-auto">

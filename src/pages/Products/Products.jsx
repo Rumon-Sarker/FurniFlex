@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import { NavLink } from "react-router-dom";
 
 const Products = () => {
 
@@ -15,9 +16,9 @@ const Products = () => {
             {/* menu section  */}
             <div className="md:w-3/12 bg-[#E8E8E8] mx-auto justify-center">
                 <ul className="flex flex-col gap-4 p-3 w-56 mx-auto mt-4">
-                    <li className="text-2xl font-medium bg-[#0E0E0E] py-3 px-6 text-[#ffffff] rounded" >Rocking chair</li>
-                    <li className="text-2xl font-medium  py-3 px-6 rounded">Side chair</li>
-                    <li className="text-2xl font-medium  py-3 px-6 rounded">Lounge chair</li>
+                    <NavLink><li className="text-2xl font-medium bg-[#0E0E0E] py-3 px-6 text-[#ffffff] rounded" >Rocking chair</li></NavLink>
+                    <NavLink><li className="text-2xl font-medium  py-3 px-6 rounded">Side chair</li> </NavLink>
+                    <NavLink><li className="text-2xl font-medium  py-3 px-6 rounded">Lounge chair</li> </NavLink>
                 </ul>
             </div>
 

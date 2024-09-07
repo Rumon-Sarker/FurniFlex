@@ -7,12 +7,11 @@ function App() {
   const location = useLocation().pathname;
 
   const showHeaderFooter = location === "/signUp" || location === "/login";
-  console.log("location name", showHeaderFooter)
+
 
   return (
     <div >
       {!showHeaderFooter && <Navbar />}
-
       <Outlet />
       {!showHeaderFooter && <Footer />}
 

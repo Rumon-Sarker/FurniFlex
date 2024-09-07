@@ -1,16 +1,34 @@
-import { GoSignIn } from "react-icons/go";
+import { useContext, useEffect } from "react";
+import { GoSignIn, GoSignOut } from "react-icons/go";
 import { TbShoppingBag } from "react-icons/tb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 
 const Navbar = () => {
+    const navigate = useNavigate();
 
+    const { user, logOut } = useContext(AuthContext);
+
+    const handaleSignOut = async () => {
+        const res = await logOut()
+            .then(result => {
+                if (result) {
+                    navigate("/products")
+                }
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+        return res;
+    }
 
     const navItem = <>
-        <li><Link to={"/"}>Home</Link></li>
+        <li><Link to={"/products"}>Home</Link></li>
         <li><Link to={"/products"}>Products</Link></li>
-        <li><Link to={"/"}>Categories</Link></li>
-        <li><Link to={"/"}>Custom</Link></li>
-        <li><Link to={"/"}>Blog</Link></li>
+        <li><Link to={"/products"}>Categories</Link></li>
+        <li><Link to={"/products"}>Custom</Link></li>
+        <li><Link to={"/products"}>Blog</Link></li>
 
     </>
     return (
@@ -72,7 +90,9 @@ const Navbar = () => {
                         <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
                     </div>
                 </div>
-                <Link className=" md:text-3xl text-2xl" to={"/login"}><GoSignIn /></Link>
+
+                {
+                    !user ? <Link className=" md:text-3xl text-2xl" to={"/login"}><GoSignIn /></Link> : <button onClick={handaleSignOut} className=" md:text-3xl text-2xl"><GoSignOut /></button>}
             </div>
         </div>
     );

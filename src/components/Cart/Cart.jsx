@@ -26,16 +26,6 @@ const Cart = () => {
                         <div className=" w-full">
 
                             <table className="table">
-                                {/* head */}
-                                {/* <thead className="md:text-xl text-black font-bold">
-                                    <tr className="bg-gray-200">
-                                        <th>#</th>
-                                        <th>Img</th>
-                                        <th>Name</th>
-                                        <th>price</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead> */}
 
                                 <tbody>
                                     {products?.map((item, index) => (

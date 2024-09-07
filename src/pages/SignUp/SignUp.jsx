@@ -2,13 +2,18 @@
 import { Box, Checkbox, Chip, Container, Divider, FormControlLabel, TextField, Typography } from "@mui/material";
 import { FaApple, } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../App.css";
 import { useForm } from "react-hook-form";
 import SocaialLogin from "../../components/SocaialLogin/SocaialLogin";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
 
 
 const SignUp = () => {
+
+    const navigate = useNavigate();
 
     const {
         register,
@@ -16,9 +21,27 @@ const SignUp = () => {
         formState: { errors },
     } = useForm();
 
+    const { signUpUser } = useContext(AuthContext);
 
-    const handleFormSubmit = (data) => {
-        console.log("Sumit Form data is", data)
+
+    const handleFormSubmit = async (data) => {
+        const email = data.email;
+        const password = data.password;
+        await signUpUser(email, password)
+            .then(res => {
+                if (res?.user?.email) {
+                    navigate("/")
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+
+
     }
 
     return (
